@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load my_custom_tags %}
+{% block body_block %}
+{% if object %}
+    {{ object.user }}
+    {{ object.first_name }}
+    {{ object.last_name }}
+    {{ object.date_of_birth }}
+    {{ object.biography }}
+    {{ object.contacts }}
+    <p>
+    Test tag with user instance: {% edit_list request.user %}</p>
+    <p>Test tag with Profile instance: {% edit_list object %}</p>
+    <p>Test tag with incorrect instnace: {% edit_list asdkaskd %}</p>
+{% endif %}
+
+{% endblock %}
