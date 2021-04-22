@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'DjangoProject.context_processors.settings',
             ],
             'builtins': [
                 'profileapp.templatetags.my_custom_tags'
