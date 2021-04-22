@@ -2,6 +2,7 @@ import sys
 from json import dumps
 from django.contrib.auth import get_user_model
 from urllib.parse import urlparse
+from profileapp.models import WebRequest
 
 
 from django.http import HttpResponsePermanentRedirect
@@ -68,7 +69,7 @@ class RequestMiddleware(object):
         if request.POST and uri != '/login/':
             post = dumps(request.POST)
 
-        models.WebRequest(
+        instance = WebRequest(
             host=request.get_host(),
             path=request.path,
             method=request.method,
@@ -85,4 +86,5 @@ class RequestMiddleware(object):
             is_secure=request.is_secure(),
             is_ajax=request.is_ajax(),
             user=user
-        ).save()
+        )
+        instance.save()
